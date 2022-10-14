@@ -17,7 +17,7 @@ main{
     justify-content: space-around;
 }
 
-main div{
+main button{
     height: 146px;
     width: 117px;
     border: 1px solid #99CEA8;
@@ -33,4 +33,32 @@ main div{
 
 .cards{
     display: block;
+}
+
+.image_1{
+    background-image: url("/img/bobrossparrot.gif");
+}
+
+.image_2{
+    background-image: url("/img/explodyparrot.gif");
+}
+
+.image_3{
+    background-image: url("/img/fiestaparrot.gif");
+}
+
+.image_4{
+    background-image: url("/img/metalparrot.gif");
+}
+
+.image_5{
+    background-image: url("/img/revertitparrot.gif");
+}
+
+.image_6{
+    background-image: url("/img/tripletsparrot.gif");
+}
+
+.image_7{
+    background-image: url("/img/unicornparrot.gif");
 }
