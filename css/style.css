@@ -1,0 +1,36 @@
+body{
+    background: #EEF9BF;
+    color: #75B79E;
+    font-family: 'Roboto';
+    font-size: 56px;
+}
+header{
+    width: 100%;
+    text-align: center;
+    margin: 40px;
+}
+
+main{
+    margin: 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+main div{
+    height: 146px;
+    width: 117px;
+    border: 1px solid #99CEA8;
+    background-color: #A7E9AF;
+    border-radius: 5px;
+    background-image: url("/img/front.png");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+    margin: 17px;
+}
+
+.cards{
+    display: block;
+}
