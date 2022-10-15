@@ -21,6 +21,30 @@ function shuffle(array){
 choice = shuffle(choice);
 const main = document.querySelector('main');
 for (let i = 0; i < cards; i++){
-    main.querySelectorAll(':scope > button')[i].classList.add("cards");
-    main.querySelectorAll(':scope > button')[i].classList.add(choice[i]);  
+    // main.querySelectorAll(':scope > button')[i].classList.add("cards");
+    main.children[i].classList.add("cards");
+    main.children[i].innerHTML = choice[i];
+};
+let clicks = 0;
+let card_choice = ""; 
+let card_button = "";
+function click_choice(value){
+    value.classList.toggle(value.innerHTML);
+    console.log(clicks, card_button, card_choice);
+    if (clicks === 0){
+        card_choice = value.innerHTML;
+        card_button = value;
+        clicks++;
+        return
+    } else if (card_choice === value.innerHTML){
+        card_button.classList.add("card_gotcha");
+        value.classList.add("card_gotcha");
+    } else{
+        card_button.classList.toggle(value.innerHTML);
+        value.classList.toggle(value.innerHTML);
+    }
+    clicks = 0;
+    card_choice = "";
+    card_button = "";
+    return
 }
