@@ -51,7 +51,7 @@ main button{
 
 .cards{
     display: block;
-    /* color: transparent; */
+    color: transparent;
 }
 
 .card_gotcha{
