@@ -27,35 +27,41 @@ for (let i = 0; i < cards; i++){
 let clicks = 0;
 let card_choice = ""; 
 let card_button = "";
-let gotcha = false;
-
 function click_choice(value){
     value.classList.toggle(value.innerHTML);
     if (clicks === 0){
         card_choice = value.innerHTML;
         card_button = value;
         clicks++;
-        console.log("Passo 1: ", clicks, card_button, card_choice);
         return
     } else if (card_button === value){
-        console.log("Passo 2: ",clicks, card_button, card_choice);
         return
     } else if (card_choice === value.innerHTML){
-        card_button.classList.add("card_gotcha");
-        value.classList.add("card_gotcha");
+        card_button.classList.toggle("card_gotcha");
+        value.classList.toggle("card_gotcha");
         card_button.disabled = true;
         value.disabled = true;
-        console.log("Passo 3: ",clicks, card_button, card_choice);
     } else{
         setTimeout(wrong_choice, 2000, value, card_button);
     }
     clicks = 0;
     card_choice = "";
     card_button = "";
+    finish();
     return
 }
 
 function wrong_choice(card1,card2){
     card1.classList.toggle(card1.innerHTML);
     card2.classList.toggle(card2.innerHTML);
+}
+
+function finish(){
+    let list_finish = [];
+    for (let i = 0; i < cards; i++){
+        list_finish.push(main.children[i].classList.contains("card_gotcha"));
+    };
+    if(list_finish.every(Boolean)){
+        alert("Você ganhou! Parabéns!!!")
+    }
 }
