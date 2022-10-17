@@ -24,6 +24,7 @@ for (let i = 0; i < cards; i++){
     main.children[i].classList.add("cards");
     main.children[i].innerHTML = choice[i];
 };
+const timerInterval = setInterval(timer, 1000);
 let clicks = 0;
 let plays = 0;
 let card_choice = ""; 
@@ -53,18 +54,24 @@ function click_choice(value){
     finish(plays);
     return
 }
-
 function wrong_choice(card1,card2){
     card1.classList.toggle(card1.innerHTML);
     card2.classList.toggle(card2.innerHTML);
 }
-
 function finish(plays){
+    const header = document.querySelector('header');
+    let time = header.children[1].children[1];
     let list_finish = [];
     for (let i = 0; i < cards; i++){
         list_finish.push(main.children[i].classList.contains("card_gotcha"));
     };
     if(list_finish.every(Boolean)){
-        alert(`Você ganhou em ${plays} jogadas!`)
+        alert(`Você ganhou em ${plays} jogadas em ${time.innerText} segundos!`)
+        clearInterval(timerInterval);
     }
+}
+function timer(){
+    const header = document.querySelector('header');
+    let time = header.children[1].children[1];
+    time.innerText++;
 }
