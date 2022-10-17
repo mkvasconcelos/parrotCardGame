@@ -26,9 +26,10 @@ main button{
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
     display: none;
     margin: 17px;
-    cursor: pointer;
+    transition: all .5s;
 }
 
 .cards{
@@ -37,33 +38,47 @@ main button{
 }
 
 .card_gotcha{
-    background-color: red;
+    background-color: lightgreen;
+    border: 2px green solid;
 }
 
 .image_1{
     background-image: url("/img/bobrossparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_2{
     background-image: url("/img/explodyparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_3{
     background-image: url("/img/fiestaparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_4{
     background-image: url("/img/metalparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_5{
     background-image: url("/img/revertitparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_6{
     background-image: url("/img/tripletsparrot.gif");
+    transform: rotateY(180deg);
 }
 
 .image_7{
     background-image: url("/img/unicornparrot.gif");
+    transform: rotateY(180deg);
+}
+
+@media (max-width: 500px){
+    body{
+        font-size: 36px;
+    }
 }

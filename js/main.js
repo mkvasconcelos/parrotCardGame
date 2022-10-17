@@ -25,9 +25,11 @@ for (let i = 0; i < cards; i++){
     main.children[i].innerHTML = choice[i];
 };
 let clicks = 0;
+let plays = 0;
 let card_choice = ""; 
 let card_button = "";
 function click_choice(value){
+    plays++;
     value.classList.toggle(value.innerHTML);
     if (clicks === 0){
         card_choice = value.innerHTML;
@@ -35,6 +37,7 @@ function click_choice(value){
         clicks++;
         return
     } else if (card_button === value){
+        plays--;
         return
     } else if (card_choice === value.innerHTML){
         card_button.classList.toggle("card_gotcha");
@@ -42,12 +45,12 @@ function click_choice(value){
         card_button.disabled = true;
         value.disabled = true;
     } else{
-        setTimeout(wrong_choice, 2000, value, card_button);
+        setTimeout(wrong_choice, 1000, value, card_button);
     }
     clicks = 0;
     card_choice = "";
     card_button = "";
-    finish();
+    finish(plays);
     return
 }
 
@@ -56,12 +59,12 @@ function wrong_choice(card1,card2){
     card2.classList.toggle(card2.innerHTML);
 }
 
-function finish(){
+function finish(plays){
     let list_finish = [];
     for (let i = 0; i < cards; i++){
         list_finish.push(main.children[i].classList.contains("card_gotcha"));
     };
     if(list_finish.every(Boolean)){
-        alert("Você ganhou! Parabéns!!!")
+        alert(`Você ganhou em ${plays} jogadas!`)
     }
 }
