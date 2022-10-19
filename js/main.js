@@ -90,6 +90,7 @@ function finish(plays,cards,timerInterval,choice){
         restart(timerInterval,cards,choice);
     }
 }
+
 function timer(){
     let time = header.children[1].children[1];
     time.innerText++;
