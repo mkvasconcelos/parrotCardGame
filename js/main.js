@@ -1,12 +1,43 @@
-let cards
-while (Number(cards)%2 !== 0 || Number(cards) < 4 || Number(cards) > 14){
-    cards = prompt("Com quantas quer jogar? Precisa ser um número par entre 4 e 14.");
+const main = document.querySelector('main');
+const header = document.querySelector('header');
+let list = game();
+
+function game(){
+    let list_image = start_game();
+    const cards = list_image[0];
+    let choice = list_image[1];
+    console.log(choice);
+    const timerInterval = setInterval(timer, 1000);
+    let clicks = 0;
+    let plays = 0;
+    let card_choice = ""; 
+    let card_button = "";
+    let list = [cards, clicks, plays, card_choice, card_button, timerInterval, choice];
+    return list;
 }
-const img = ["image_1","image_2","image_3","image_4","image_5","image_6","image_7"];
-let choice = [];
-for (let i = 0; i < cards/2; i++){
-    choice.push(img[i]);
-    choice.push(img[i]);
+
+function start_game(){
+    let cards = 0;
+    while (Number(cards)%2 !== 0 || Number(cards) < 4 || Number(cards) > 14){
+        cards = prompt("Com quantas quer jogar? Precisa ser um número par entre 4 e 14.");
+    }
+    let choice = images_chosen(cards);
+    choice = shuffle(choice);
+    for (let i = 0; i < cards; i++){
+        main.children[i].classList.add("cards");
+        main.children[i].innerHTML = choice[i];
+    };
+    let list = [cards, choice];
+    return list;
+}
+function images_chosen(cards){
+    const img = ["image_1","image_2","image_3","image_4","image_5","image_6","image_7"];
+    let choice = [];
+    for (let i = 0; i < cards/2; i++){
+        choice.push(img[i]);
+        choice.push(img[i]);
+    }
+    return choice;
 }
 function shuffle(array){
     let iter = array.length;
@@ -18,60 +49,69 @@ function shuffle(array){
         }
     return z;
 }
-choice = shuffle(choice);
-const main = document.querySelector('main');
-for (let i = 0; i < cards; i++){
-    main.children[i].classList.add("cards");
-    main.children[i].innerHTML = choice[i];
-};
-const timerInterval = setInterval(timer, 1000);
-let clicks = 0;
-let plays = 0;
-let card_choice = ""; 
-let card_button = "";
-function click_choice(value){
-    plays++;
+
+function click_choice(value,list){
+    list[2]++;
     value.classList.toggle(value.innerHTML);
-    if (clicks === 0){
-        card_choice = value.innerHTML;
-        card_button = value;
-        clicks++;
+    if (list[1] === 0){
+        list[4] = value.innerHTML;
+        list[5] = value;
+        list[1]++;
         return
-    } else if (card_button === value){
-        plays--;
+    } else if (list[5] === value){
+        list[2]--;
         return
-    } else if (card_choice === value.innerHTML){
-        card_button.classList.toggle("card_gotcha");
+    } else if (list[4] === value.innerHTML){
+        list[5].classList.toggle("card_gotcha");
         value.classList.toggle("card_gotcha");
-        card_button.disabled = true;
+        list[5].disabled = true;
         value.disabled = true;
     } else{
-        setTimeout(wrong_choice, 1000, value, card_button);
+        setTimeout(wrong_choice, 1000, value, list[5]);
     }
-    clicks = 0;
-    card_choice = "";
-    card_button = "";
-    finish(plays);
+    list[1] = 0;
+    list[4] = "";
+    list[5] = "";
+    finish(list[2],list[0],list[5],list[6]);
     return
 }
 function wrong_choice(card1,card2){
     card1.classList.toggle(card1.innerHTML);
     card2.classList.toggle(card2.innerHTML);
 }
-function finish(plays){
+function finish(plays,cards,timerInterval,choice){
     const header = document.querySelector('header');
     let time = header.children[1].children[1];
     let list_finish = [];
+    console.log(cards);
     for (let i = 0; i < cards; i++){
         list_finish.push(main.children[i].classList.contains("card_gotcha"));
     };
     if(list_finish.every(Boolean)){
-        alert(`Você ganhou em ${plays} jogadas em ${time.innerText} segundos!`)
-        clearInterval(timerInterval);
+        alert(`Você ganhou em ${plays/2} jogadas em ${time.innerText} segundos!`)
+        restart(timerInterval,cards,choice);
     }
 }
 function timer(){
-    const header = document.querySelector('header');
     let time = header.children[1].children[1];
     time.innerText++;
+}
+
+function restart(timerInterval,cards,choice){
+    clearInterval(timerInterval);
+    let restart = prompt("Quer jogar novamente?");
+    restart = restart.toLowerCase();
+    if (restart === "sim"){
+        for (let i = 0; i < cards; i++){
+            main.children[i].classList.remove('cards');
+            main.children[i].classList.remove('card_gotcha');
+            main.children[i].classList.remove(choice[i]);
+            main.children[i].disabled = false;
+            main.children[i].innerHTML = "";
+        };
+        header.children[1].children[1].innerText = 0;
+        console.log(choice);
+        list = game();
+    }
+    return list;
 }
