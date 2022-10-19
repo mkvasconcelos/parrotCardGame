@@ -74,10 +74,12 @@ function click_choice(value,list){
     finish(list[2],list[0],list[5],list[6]);
     return
 }
+
 function wrong_choice(card1,card2){
     card1.classList.toggle(card1.innerHTML);
     card2.classList.toggle(card2.innerHTML);
 }
+
 function finish(plays,cards,timerInterval,choice){
     const header = document.querySelector('header');
     let time = header.children[1].children[1];
