@@ -5,8 +5,7 @@ let list = game();
 function game(){
     let list_image = start_game();
     const cards = list_image[0];
-    let choice = list_image[1];
-    console.log(choice);
+    let choice = list_image[1];;
     const timerInterval = setInterval(timer, 1000);
     let clicks = 0;
     let plays = 0;
@@ -83,7 +82,6 @@ function finish(plays,cards,timerInterval,choice){
     const header = document.querySelector('header');
     let time = header.children[1].children[1];
     let list_finish = [];
-    console.log(cards);
     for (let i = 0; i < cards; i++){
         list_finish.push(main.children[i].classList.contains("card_gotcha"));
     };
@@ -110,7 +108,6 @@ function restart(timerInterval,cards,choice){
             main.children[i].innerHTML = "";
         };
         header.children[1].children[1].innerText = 0;
-        console.log(choice);
         list = game();
     }
     return list;
