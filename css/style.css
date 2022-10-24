@@ -60,37 +60,37 @@ main button{
 }
 
 .image_1{
-    background-image: url("/img/bobrossparrot.gif");
+    background-image: url("img/bobrossparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_2{
-    background-image: url("/img/explodyparrot.gif");
+    background-image: url("img/explodyparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_3{
-    background-image: url("/img/fiestaparrot.gif");
+    background-image: url("img/fiestaparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_4{
-    background-image: url("/img/metalparrot.gif");
+    background-image: url("img/metalparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_5{
-    background-image: url("/img/revertitparrot.gif");
+    background-image: url("img/revertitparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_6{
-    background-image: url("/img/tripletsparrot.gif");
+    background-image: url("img/tripletsparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_7{
-    background-image: url("/img/unicornparrot.gif");
+    background-image: url("img/unicornparrot.gif");
     transform: rotateY(180deg);
 }
 
