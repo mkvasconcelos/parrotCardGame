@@ -40,7 +40,7 @@ main button{
     border: 1px solid #99CEA8;
     background-color: #A7E9AF;
     border-radius: 5px;
-    background-image: url("image/front.png");
+    background-image: url("image_folder/front.png");
     background-size: 100px;
     background-repeat: no-repeat;
     background-position: center;
@@ -61,37 +61,37 @@ main button{
 }
 
 .image_1{
-    background-image: url("image/bobrossparrot.gif");
+    background-image: url("image_folder/bobrossparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_2{
-    background-image: url("image/explodyparrot.gif");
+    background-image: url("image_folder/explodyparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_3{
-    background-image: url("image/fiestaparrot.gif");
+    background-image: url("image_folder/fiestaparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_4{
-    background-image: url("image/metalparrot.gif");
+    background-image: url("image_folder/metalparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_5{
-    background-image: url("image/revertitparrot.gif");
+    background-image: url("image_folder/revertitparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_6{
-    background-image: url("image/tripletsparrot.gif");
+    background-image: url("image_folder/tripletsparrot.gif");
     transform: rotateY(180deg);
 }
 
 .image_7{
-    background-image: url("image/unicornparrot.gif");
+    background-image: url("image_folder/unicornparrot.gif");
     transform: rotateY(180deg);
 }
 
